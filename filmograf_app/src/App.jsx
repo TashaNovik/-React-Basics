@@ -1,35 +1,154 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './components/Home';
+import Favorites from './components/Favorites';
+import MoviePage from './components/MoviePage';
+import MovieForm from './components/MovieForm';
+import { Box } from "@chakra-ui/react";
+import matrix from './assets/matrix.png';
+import mad_max from './assets/mad_max.png';
+import gentelments from './assets/gentelments.png';
+import renegades from './assets/renegades.png';
+import gladiator from './assets/gladiator.png';
+import hollywood from './assets/Once Upon a Time in Hollywood.png';
+import proposal from './assets/proposal.png';
+import million_dollar_baby from './assets/million_dollar_baby.png';
+import larry_crown from './assets/larry_crown.png';
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [movies, setMovies] = useState([
+        {
+            id: 1,
+            title: "Матрица",
+            genre: "Боевик",
+            duration: 136,
+            poster: matrix,
+            description: "«Матрица» - научно-фантастический боевик...",
+        },
+        {
+            id: 2,
+            title: "Безумный Макс",
+            genre: "Боевик",
+            duration: 88,
+            poster: mad_max,
+            description: "Описание для Безумного Макса",
+        },
+        {
+            id: 3,
+            title: "Джентельмены",
+            genre: "Триллер",
+            duration: 113,
+            poster: gentelments, //  Убедитесь, что путь корректный
+            description: "Описание для Джентельменов",
+        },
+        {
+            id: 4,
+            title: "Отступники",
+            genre: "Драма",
+            duration: 151,
+            poster: renegades, //  Убедитесь, что путь корректный
+            description: "Описание для Отступников",
+        },
+        {
+            id: 5,
+            title: "Гладиатор",
+            genre: "Боевик",
+            duration: 155,
+            poster: gladiator, //  Убедитесь, что путь корректный
+            description: "Описание для Гладиатора",
+        },
+        {
+            id: 6,
+            title: "Однажды в Голливуде",
+            genre: "Драма",
+            duration: 161,
+            poster: hollywood, //  Убедитесь, что путь корректный
+            description: "Описание для Гладиатора",
+        },
+        {
+            id: 7,
+            title: "Предложение",
+            genre: "Комедия",
+            duration: 108,
+            poster: proposal, //  Убедитесь, что путь корректный
+            description: "Описание для Предложения",
+        },
+        {
+            id: 8,
+            title: "Малышка на миллион",
+            genre: "Драма",
+            duration: 132,
+            poster: million_dollar_baby, //  Убедитесь, что путь корректный
+            description: "Описание для Малышки на миллион",
+        },
+        {
+            id: 9,
+            title: "Ларри Краун",
+            genre: "Комедия",
+            duration: 98,
+            poster: larry_crown, //  Убедитесь, что путь корректный
+            description: "Описание для Ларри Краун",
+        }
+    ]);
+    const [filteredMovies, setFilteredMovies] = useState(movies);
+    const [favorites, setFavorites] = useState([]);
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+    const addMovie = (newMovie) => {
+        setMovies([...movies, newMovie]);
+    };
+
+    const updateMovie = (updatedMovie) => {
+        setMovies(movies.map((movie) => (movie.id === updatedMovie.id ? updatedMovie : movie)));
+    };
+
+    const addToFavorites = (movie) => {
+        if (!favorites.find(f => f.id === movie.id)) {
+            setFavorites([...favorites, movie]);
+        }
+    };
+
+    const removeFromFavorites = (movie) => {
+        setFavorites(favorites.filter((f) => f.id !== movie.id));
+    };
+
+    return (
+        <Box>
+            <Router>
+                <div className="App">
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={
+                            <Home
+                                movies={filteredMovies}
+                                setFilteredMovies={setFilteredMovies}
+                                favorites={favorites}
+                                addToFavorites={addToFavorites}
+                                removeFromFavorites={removeFromFavorites}
+                            />
+                        } />
+                        <Route path="/favorites" element={
+                            <Favorites
+                                favorites={favorites}
+                                removeFromFavorites={removeFromFavorites}
+                            />
+                        } />
+                        <Route path="/movies/:movieId" element={
+                            <MoviePage
+                                movies={movies}
+                                addToFavorites={addToFavorites}
+                                removeFromFavorites={removeFromFavorites}
+                                favorites={favorites}
+                            />
+                        } />
+                        <Route path="/add" element={<MovieForm addMovie={addMovie} />} />
+                        <Route path="/movies/:movieId/edit" element={<MovieForm movies={movies} updateMovie={updateMovie} />} />
+                    </Routes>
+                </div>
+            </Router>
+        </Box>
+    );
 }
 
-export default App
+export default App;
