@@ -121,8 +121,9 @@ function App() {
                     <Routes>
                         <Route path="/" element={
                             <Home
-                                movies={filteredMovies}
-                                setFilteredMovies={setFilteredMovies}
+                                movies={movies} // Передаем исходный массив
+                                filteredMovies={filteredMovies} // Передаем отфильтрованный массив
+                                setFilteredMovies={setFilteredMovies} // Передаем функцию для обновления фильтра
                                 favorites={favorites}
                                 addToFavorites={addToFavorites}
                                 removeFromFavorites={removeFromFavorites}

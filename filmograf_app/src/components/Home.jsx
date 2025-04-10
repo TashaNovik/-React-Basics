@@ -1,14 +1,20 @@
+import Filter from './Filter';
 import MovieList from './MovieList';
-import Filter from './Filter'; // Если нужен фильтр на главной
 
-function Home({ movies, setFilteredMovies }) { // Добавим setFilteredMovies для фильтрации
+function Home({ movies, filteredMovies, setFilteredMovies, favorites, addToFavorites, removeFromFavorites }) {
     return (
         <main>
-            {/* Добавьте компонент фильтра, если нужно */}
+            <h2>Фильмы</h2>
             <Filter movies={movies} setFilteredMovies={setFilteredMovies} />
-            <MovieList movies={movies} /> {/* Передаем отфильтрованный список, если есть */}
+            <MovieList
+                movies={filteredMovies} // Используем отфильтрованный список
+                favorites={favorites}
+                addToFavorites={addToFavorites}
+                removeFromFavorites={removeFromFavorites}
+            />
         </main>
     );
 }
+
 
 export default Home;

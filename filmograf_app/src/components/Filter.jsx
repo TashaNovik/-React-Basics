@@ -8,12 +8,12 @@ function Filter({ movies, setFilteredMovies }) {
         setSelectedGenre(genre);
 
         if (genre === 'all') {
-            setFilteredMovies(movies);
+            setFilteredMovies([...movies]); // Обновляем состояние с новым массивом
         } else {
-            setFilteredMovies(movies.filter(movie => movie.genre === genre));
+            const filtered = movies.filter(movie => movie.genre === genre);
+            setFilteredMovies([...filtered]); // Обновляем состояние с новым массивом
         }
     };
-
 
     return (
         <div>
@@ -21,13 +21,14 @@ function Filter({ movies, setFilteredMovies }) {
             <select id="genre-filter" value={selectedGenre} onChange={handleFilterChange}>
                 <option value="all">Все</option>
                 <option value="Боевик">Боевик</option>
-                <option value="Комедия">Комедия</option>
                 <option value="Триллер">Триллер</option>
+                <option value="Комедия">Комедия</option>
                 <option value="Драма">Драма</option>
-
+                {/* ... другие жанры */}
             </select>
         </div>
     );
 }
+
 
 export default Filter;
