@@ -1,19 +1,21 @@
+import { SimpleGrid } from '@chakra-ui/react';
 import MovieCard from './MovieCard';
 
-function MovieList({ movies, addToFavorites, removeFromFavorites, favorites }) { // Передаем favorites
+function MovieList({ movies, favorites, addToFavorites, removeFromFavorites }) {
     return (
-        <div className="movie-list">
+        <SimpleGrid columns={[1, 2, 3]} spacing="20px"> {/* Используем SimpleGrid */}
             {movies.map((movie) => (
                 <MovieCard
                     key={movie.id}
                     movie={movie}
                     addToFavorites={addToFavorites}
                     removeFromFavorites={removeFromFavorites}
-                    favorites={favorites} // Передаем favorites в MovieCard
+                    favorites={favorites}
                 />
             ))}
-        </div>
+        </SimpleGrid>
     );
 }
+
 
 export default MovieList;
