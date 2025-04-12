@@ -1,11 +1,7 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {useState} from 'react';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
-import Home from './components/Home';
-import Favorites from './components/Favorites';
-import MoviePage from './components/MoviePage';
-import MovieForm from './components/MovieForm';
-import { Box } from "@chakra-ui/react";
+import {Box} from "@chakra-ui/react";
 import matrix from './assets/matrix.png';
 import mad_max from './assets/mad_max.png';
 import gentelments from './assets/gentelments.png';
@@ -15,6 +11,7 @@ import hollywood from './assets/Once Upon a Time in Hollywood.png';
 import proposal from './assets/proposal.png';
 import million_dollar_baby from './assets/million_dollar_baby.png';
 import larry_crown from './assets/larry_crown.png';
+import AppRoutes from "./router.jsx";
 
 function App() {
     const [movies, setMovies] = useState([
@@ -117,35 +114,17 @@ function App() {
         <Box>
             <Router>
                 <div className="App">
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={
-                            <Home
-                                movies={movies} // Передаем исходный массив
-                                filteredMovies={filteredMovies} // Передаем отфильтрованный массив
-                                setFilteredMovies={setFilteredMovies} // Передаем функцию для обновления фильтра
-                                favorites={favorites}
-                                addToFavorites={addToFavorites}
-                                removeFromFavorites={removeFromFavorites}
-                            />
-                        } />
-                        <Route path="/favorites" element={
-                            <Favorites
-                                favorites={favorites}
-                                removeFromFavorites={removeFromFavorites}
-                            />
-                        } />
-                        <Route path="/movies/:movieId" element={
-                            <MoviePage
-                                movies={movies}
-                                addToFavorites={addToFavorites}
-                                removeFromFavorites={removeFromFavorites}
-                                favorites={favorites}
-                            />
-                        } />
-                        <Route path="/add" element={<MovieForm addMovie={addMovie} />} />
-                        <Route path="/movies/:movieId/edit" element={<MovieForm movies={movies} updateMovie={updateMovie} />} />
-                    </Routes>
+                    <Header/>
+                    <AppRoutes
+                        movies={movies}
+                        filteredMovies={filteredMovies}
+                        setFilteredMovies={setFilteredMovies}
+                        favorites={favorites}
+                        addMovie={addMovie}
+                        updateMovie={updateMovie}
+                        addToFavorites={addToFavorites}
+                        removeFromFavorites={removeFromFavorites}
+                    />
                 </div>
             </Router>
         </Box>
