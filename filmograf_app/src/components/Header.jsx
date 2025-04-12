@@ -1,17 +1,20 @@
 import { Link } from 'react-router-dom';
-import { Box, HStack, Spacer } from '@chakra-ui/react';
-
+import { HStack, Button } from '@chakra-ui/react';
 
 function Header() {
     return (
         <header>
-            <nav>
-                <HStack spacing="240px" >
-                    <Link to="/">Главная</Link>
-                    <Link to="/favorites">Избранное</Link>
-                    <Link to="/add">Добавить фильм</Link>
-                </HStack>
-            </nav>
+            <HStack spacing="20px" paddingY="4">
+                <Link to="/">
+                    <Button variant="link" colorScheme="teal" _hover={{ color: 'teal.500' }}>Главная</Button>
+                </Link>
+                <Link to="/favorites">
+                    <Button variant="link" colorScheme="teal" _hover={{ color: 'teal.500' }}>Избранное</Button>
+                </Link>
+                <Link to="/add">
+                    <Button variant="link" colorScheme="teal" _hover={{ color: 'teal.500' }}>Добавить фильм</Button>
+                </Link>
+            </HStack>
         </header>
     );
 }
