@@ -39,7 +39,7 @@ function App() {
             title: "Джентельмены",
             genre: "Триллер",
             duration: 113,
-            poster: gentelments, //  Убедитесь, что путь корректный
+            poster: gentelments,
             description: "Описание для Джентельменов",
         },
         {
@@ -47,7 +47,7 @@ function App() {
             title: "Отступники",
             genre: "Драма",
             duration: 151,
-            poster: renegades, //  Убедитесь, что путь корректный
+            poster: renegades,
             description: "Описание для Отступников",
         },
         {
@@ -55,7 +55,7 @@ function App() {
             title: "Гладиатор",
             genre: "Боевик",
             duration: 155,
-            poster: gladiator, //  Убедитесь, что путь корректный
+            poster: gladiator,
             description: "Описание для Гладиатора",
         },
         {
@@ -63,7 +63,7 @@ function App() {
             title: "Однажды в Голливуде",
             genre: "Драма",
             duration: 161,
-            poster: hollywood, //  Убедитесь, что путь корректный
+            poster: hollywood,
             description: "Описание для Гладиатора",
         },
         {
@@ -71,7 +71,7 @@ function App() {
             title: "Предложение",
             genre: "Комедия",
             duration: 108,
-            poster: proposal, //  Убедитесь, что путь корректный
+            poster: proposal,
             description: "Описание для Предложения",
         },
         {
@@ -79,7 +79,7 @@ function App() {
             title: "Малышка на миллион",
             genre: "Драма",
             duration: 132,
-            poster: million_dollar_baby, //  Убедитесь, что путь корректный
+            poster: million_dollar_baby,
             description: "Описание для Малышки на миллион",
         },
         {
@@ -87,7 +87,7 @@ function App() {
             title: "Ларри Краун",
             genre: "Комедия",
             duration: 98,
-            poster: larry_crown, //  Убедитесь, что путь корректный
+            poster: larry_crown,
             description: "Описание для Ларри Краун",
         }
     ]);

@@ -1,5 +1,7 @@
 function Footer() {
-    return <footer> {/* Подвал сайта */}</footer>;
+    return <footer>
+    <div className="footer">Фильмограф</div>
+    </footer>;
 }
 
 export default Footer;
