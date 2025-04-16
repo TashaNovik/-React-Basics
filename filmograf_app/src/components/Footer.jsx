@@ -1,29 +1,26 @@
-// Footer.jsx
 import { Box, Text, Link, HStack, VStack } from '@chakra-ui/react';
 
 function Footer() {
     const currentYear = new Date().getFullYear();
 
-
     return (
-        <Box bg="gray.100" p="4" mt="8">
-            <VStack spacing="4" align="center"> {/* Для вертикального центрирования */}
+        <Box bg="black" color="white" p="4" mt="8"> {/* Измененный фон и цвет текста */}
+            <VStack spacing="4" align="center">
 
-                <Text fontSize="lg" fontWeight="bold">Фильмография</Text> {/* Название */}
-                <Text fontSize="sm">Приложение для поиска и сохранения информации о фильмах.</Text>  {/* Описание */}
+                <Text fontSize="lg" fontWeight="bold">Фильмограф</Text>
+                <Text fontSize="sm">Приложение для поиска и сохранения информации о фильмах.</Text>
 
-                <HStack spacing="4"> {/* Для горизонтального расположения ссылок */}
-                    <Link href="#"  _hover={{ textDecoration: 'underline' }}> О нас</Link>
-                    <Link href="#" _hover={{ textDecoration: 'underline' }}>Контакты </Link>
+                <HStack spacing="4">
+                    <Link href="#" _hover={{ textDecoration: 'underline' }}>О нас</Link>
+                    <Link href="#" _hover={{ textDecoration: 'underline' }}>Контакты</Link>
                 </HStack>
 
-                <Text fontSize="sm">© {currentYear} Фильмография</Text> {/* Copyright */}
-
+                <Text fontSize="sm">© {currentYear} Фильмограф</Text>
 
             </VStack>
         </Box>
     );
-}
 
+}
 
 export default Footer;
