@@ -3,6 +3,7 @@ import Home from './components/Home';
 import Favorites from './components/Favorites';
 import MoviePage from './components/MoviePage';
 import MovieForm from './components/MovieForm';
+import Footer from './components/Footer';
 
 
 function AppRoutes({ movies, filteredMovies, setFilteredMovies, favorites, addMovie, updateMovie, addToFavorites, removeFromFavorites }) { // Принимаем все необходимые props
@@ -33,7 +34,7 @@ function AppRoutes({ movies, filteredMovies, setFilteredMovies, favorites, addMo
                 />
             } />
             <Route path="/add" element={<MovieForm addMovie={addMovie} />} />
-            <Route path="/movies/:movieId/edit" element={<MovieForm movies={movies} updateMovie={updateMovie} />} />
+            <Route path="/movies/:movieId/edit" element={<MovieForm movies={movies} updateMovie={updateMovie} />}/>
         </Routes>
     );
 }
