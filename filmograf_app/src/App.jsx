@@ -111,7 +111,7 @@ function App() {
     };
 
     return (
-        <Box>
+        <Box bg="white" minH="100vh">
             <Router>
                 <div className="App">
                     <Header/>
